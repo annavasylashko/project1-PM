@@ -1,0 +1,89 @@
+.carousel-inner {
+  position: relative;
+  display: none;
+  height: 44px;
+  width: 100%;
+  background-color: #ff5816;
+  border-radius: 5px;
+  padding: 0 12px;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  border-bottom: 2px solid #c44411;
+  transition: transform 0.6s ease;
+  box-sizing: border-box;
+}
+
+.carousel-container .track {
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.5s;
+}
+
+.menuWrapper li {
+  list-style: none;
+  display: flex;
+  font-size: 13px;
+  background-color: #ff5816;
+  line-height: 16px;
+  padding: 10px;
+  height: 44px;
+  width: 186px;
+
+  flex-shrink: 0;
+  cursor: pointer;
+  border-right: 1px solid #ff743d;
+  justify-content: center;
+  align-items: center;
+}
+.menuWrapper li a {
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+.menuWrapper li:hover {
+  background-color: #ff743d;
+  text-decoration: underline;
+}
+
+.carousel-inner .menuWrapperArrow_prev,
+.carousel-inner .menuWrapperArrow_next {
+  position: absolute;
+  background-color: #c44411;
+  width: 12px;
+  height: 100%;
+  color: #fff;
+  padding-top: 2px;
+  text-decoration: none;
+  font-size: 14px;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  border: none;
+
+  z-index: 200;
+}
+
+.menuWrapperArrow {
+  display: inline;
+}
+
+.carousel-inner .menuWrapperArrow_prev {
+  left: 0;
+}
+
+.carousel-inner .menuWrapperArrow_next {
+  right: 0;
+}
+
+.menuWrapperArrow:hover {
+  color: #879296;
+}
+
+.menuWrapperArrow.hide {
+  display: none;
+}
+@media screen and (min-width: 1140px) {
+  .carousel-inner {
+    display: flex;
+  }
+}

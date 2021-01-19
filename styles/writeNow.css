@@ -1,0 +1,32 @@
+.writeNowWrapper {
+  display: none;
+}
+
+.writeNowItem {
+  display: flex;
+  flex-direction: column;
+  height: 275px;
+  max-width: 300px;
+  align-items: center;
+  margin: 0 25px;
+  overflow: hidden;
+}
+
+.writeNowItem img {
+  max-width: 250px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+.writeNowItem a {
+  max-width: 250px;
+  text-overflow: ellipsis;
+}
+@media screen and (min-width: 750px) {
+  .writeNowWrapper {
+    display: flex;
+    height: 275px;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+}
