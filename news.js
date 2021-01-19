@@ -1,3 +1,5 @@
+//-----NEWS-----
+
 const months = [
   "января",
   "февраля",
@@ -39,6 +41,8 @@ if (typeof NEWS != "undefined") {
       return randArray;
     };
 
+    //-----RANDOMIZER-----
+    
     const RandomList = createRand(3, 0, NEWS.length - 1);
 
     const dataNews = document.createElement("div");

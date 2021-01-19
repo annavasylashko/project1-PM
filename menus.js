@@ -1,3 +1,5 @@
+//-----TOP MENU-----
+
 const topMenu = document.getElementById("menu");
 let sortedTopMenu = Object.entries(TOP_MENU).sort(
   (a, b) => a[1].order - b[1].order

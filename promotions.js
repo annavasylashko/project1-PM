@@ -1,3 +1,5 @@
+//-----PROMOTIONS-----
+
 const dataPromo = document.createElement("div");
 
 const timeBlock = (item) =>
@@ -58,9 +60,10 @@ const timeBlock = (item) =>
   </div>
 </div>
 </div>`
-    : `<div class="timerBlock"><b>NO LIMIT</b></div>`;
+    : `<div class="timerBlock"><b>ALWAYS</b></div>`;
 
 const promoWrapper = document.createElement("div");
+
 PROMOTIONS.forEach((item) => {
   let promoItem = document.createElement("div");
   promoItem.innerHTML = `
@@ -128,13 +131,13 @@ const perPagePromo = (width) => {
 
   var resizeTimeout;
   function resizeThrottler() {
-    // ignore resize events as long as an actualResizeHandler execution is in the queue
+    //--Ignore resize events as long as an actualResizeHandler execution is in the queue--
     if (!resizeTimeout) {
       resizeTimeout = setTimeout(function () {
         resizeTimeout = null;
         actualResizeHandler();
 
-        // The actualResizeHandler will execute at a rate of 15fps
+        //--The actualResizeHandler will execute at a rate of 15fps--
       }, 30);
     }
   }

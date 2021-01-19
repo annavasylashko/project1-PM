@@ -1,15 +1,17 @@
+//-----RESIZE-----
+
 (function () {
   window.addEventListener("resize", resizeThrottler, false);
 
   var resizeTimeout;
   function resizeThrottler() {
-    // ignore resize events as long as an actualResizeHandler execution is in the queue
+    //--Ignore resize events as long as an actualResizeHandler execution is in the queue--
     if (!resizeTimeout) {
       resizeTimeout = setTimeout(function () {
         resizeTimeout = null;
         actualResizeHandler();
 
-        // The actualResizeHandler will execute at a rate of 15fps
+        //--The actualResizeHandler will execute at a rate of 15fps--
       }, 30);
     }
   }
@@ -29,16 +31,17 @@
   }
 })();
 
+//-----BANNER-----
 function myFunc() {
   let bannerBlock = document.getElementById("bannerWrap");
 
   let bannerWrapper = document.createElement("div");
   BANNER.forEach((item) => {
-    let bannerContaiber = document.createElement("div");
-    bannerContaiber.classList.add("bannerContainer");
-    bannerContaiber.classList.add("splide__slide");
-    bannerContaiber.style.backgroundImage = `url(${item.img})`;
-    bannerContaiber.innerHTML = `
+    let bannerContainer = document.createElement("div");
+    bannerContainer.classList.add("bannerContainer");
+    bannerContainer.classList.add("splide__slide");
+    bannerContainer.style.backgroundImage = `url(${item.img})`;
+    bannerContainer.innerHTML = `
                 <h1>Революционное решение</h1>
                 <h2>На рынке среди систем вкс!</h2>
                 <h3>GVC 3200 от компании grandstream это:</h3>
@@ -56,7 +59,7 @@ function myFunc() {
               </ul>
              <a href=${item.url || "#"}> <button>Подробнее</button></a>
         `;
-    bannerWrapper.appendChild(bannerContaiber);
+    bannerWrapper.appendChild(bannerContainer);
   });
   bannerBlock.innerHTML = `
 <div class="banner splide" id="banner1">

@@ -1,8 +1,11 @@
-// buy button
+//-----CART BUTTON-----
+
 let quantity = document.querySelector(".quantity");
 let quantityMob = document.querySelector(".quantityMob");
 let money = document.querySelector(".money");
+
 document.querySelector(".currency").innerHTML = CURRENCY;
+
 quantity.innerHTML = BASKET.elements;
 quantityMob.innerHTML = BASKET.elements;
 money.innerHTML = BASKET.price;
@@ -12,6 +15,7 @@ const getPrice = (price, currency) => {
     ? price
     : Math.ceil(price * CURRENCY_EXCHANGE[currency], 1);
 };
+
 const buy = (price) => {
   if (price) {
     quantity.innerHTML = Number(quantity.innerHTML) + 1;
@@ -22,14 +26,17 @@ const buy = (price) => {
   }
 };
 
-// create items category arrays
+//-----CREATE ITEMS CATEGORIES-----
+
 let itemsNew = ITEMS.filter((item) => item.type === "new").sort((a, b) => {
   return new Date(b.date) - new Date(a.date);
+  //--Sort by date--
 });
 
 let itemsRecommended = ITEMS.filter((item) => item.type === "recommended").sort(
   (a, b) => {
     return a.price - b.price || Number.NEGATIVE_INFINITY;
+      //--Sort by price ascending--
   }
 );
 
@@ -46,6 +53,7 @@ const getDeltaPrice = (item) => {
 
 let itemsSale = ITEMS.filter((item) => item.type === "sale").sort((a, b) => {
   return getDeltaPrice(b) - getDeltaPrice(a);
+    //--Sort by price difference--
 });
 
 const card = (item) => {
@@ -55,7 +63,7 @@ const card = (item) => {
       <a href=${item.url || "#"} class="goodName">${item.description}</a>
       <div class="priceBlock">
         Цена: <span class="newPrice">${
-          getPrice(item.price, item.currency) || "SOLD OUT"
+          getPrice(item.price, item.currency) || "OUT OF STOCK"
         } ${item.price && item.currency ? CURRENCY : ""}</span>
         <span class="oldPrice">${
           getPrice(item.oldPrice, item.currency) || ""
@@ -88,7 +96,8 @@ const card = (item) => {
     </div>`;
 };
 
-//NEW
+//-----NEW ITEMS-----
+
 const dataNew = document.createElement("div");
 itemsNew.forEach((item) => {
   let prod = document.createElement("div");
@@ -145,7 +154,8 @@ itemsRecommended.forEach((item) => {
   dataRecommended.appendChild(prod);
 });
 
-//Recommended
+//-----RECOMMENDED ITEMS-----
+
 const itemRecommended = document.getElementsByClassName(
   "container recommended"
 )[0];
@@ -164,8 +174,10 @@ ${dataRecommended.innerHTML}
 
 `;
 itemsRecommended.length < 1 && itemRecommended.remove();
+
 let perPageRecomendedCount = 1;
 let arrowsRecomended = true;
+
 const perPageRecomended = (width) => {
   if (width < 600) {
     return dataRecommended.childElementCount > 1
@@ -190,8 +202,9 @@ const perPageRecomended = (width) => {
   }
 };
 
-//SALE
+//-----SALE ITEMS-----
 const dataSale = document.createElement("div");
+
 itemsSale.forEach((item) => {
   let prod = document.createElement("div");
   prod.classList.add("splide__slide");
@@ -218,8 +231,10 @@ ${dataSale.innerHTML}
 
 `;
 itemsSale.length < 1 && saleItem.remove();
+
 let perPageSaleCount = 1;
 let arrowsSale = true;
+
 const perPageSale = (width) => {
   if (width < 600) {
     dataSale.childElementCount > 1
@@ -244,26 +259,27 @@ const perPageSale = (width) => {
   }
 };
 
-//RESIZE
+//-----RESIZE-----
 
 (function () {
   window.addEventListener("resize", resizeThrottler, false);
 
   var resizeTimeout;
   function resizeThrottler() {
-    // ignore resize events as long as an actualResizeHandler execution is in the queue
+    //--Ignore resize events as long as an actualResizeHandler execution is in the queue--
     if (!resizeTimeout) {
       resizeTimeout = setTimeout(function () {
         resizeTimeout = null;
         actualResizeHandler();
 
-        // The actualResizeHandler will execute at a rate of 15fps
+        //--The actualResizeHandler will execute at a rate of 15fps--
       }, 30);
     }
   }
 
   function actualResizeHandler() {
     perPageSale(document.body.clientWidth);
+
     new Splide("#goodsWrapperSale", {
       perPage: perPageSaleCount,
       perMove: 1,
@@ -272,6 +288,7 @@ const perPageSale = (width) => {
       arrows: arrowsSale,
     }).mount();
     perPageNew(document.body.clientWidth);
+
     new Splide("#goodsWrapperNew", {
       perPage: perPageNewCount,
       perMove: 1,
@@ -280,6 +297,7 @@ const perPageSale = (width) => {
       arrows: arrowsNew,
     }).mount();
     perPageRecomended(document.body.clientWidth);
+
     new Splide("#goodsWrapperRecommended", {
       perPage: perPageRecomendedCount,
       perMove: 1,
@@ -301,6 +319,7 @@ function myFunc() {
     arrows: arrowsNew,
   }).mount();
   perPageSale(document.body.clientWidth);
+
   new Splide("#goodsWrapperSale", {
     perPage: perPageSaleCount,
     perMove: 1,
@@ -309,6 +328,7 @@ function myFunc() {
     arrows: arrowsSale,
   }).mount();
   perPageRecomended(document.body.clientWidth);
+  
   new Splide("#goodsWrapperRecommended", {
     perPage: perPageRecomendedCount,
     perMove: 1,

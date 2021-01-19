@@ -51,14 +51,14 @@
   .bannerContainer > div {
     margin-bottom: 30px;
   }
-  #banner h1,
-  #banner h2,
-  #banner h3 {
+  .bannerContainer h1,
+  .bannerContainer h2,
+  .bannerContainer h3 {
     text-transform: uppercase;
     font-size: 24px;
   }
 
-  #banner h1 {
+  .bannerContainer h1 {
     font-weight: 400;
     color: #ff5816;
   }
@@ -86,12 +86,7 @@
     margin: 10px;
   }
 
-  .arrow:hover {
-    width: 16px;
-    height: 70px;
-  }
-
-  .bannerContainer > button {
+  .bannerContainer button {
     text-transform: uppercase;
     background-color: #fff;
     color: #4673ab;
@@ -107,7 +102,7 @@
     cursor: pointer;
   }
 
-  .bannerContainer > button:hover {
+  .bannerContainer button:hover {
     background-color: rgb(230, 230, 230);
   }
 
